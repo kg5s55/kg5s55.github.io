@@ -201,7 +201,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://kg5s.top/2023/03/17/photo/">
+    <link itemprop="mainEntityOfPage" href="http://kg5s.top/2023/03/17/gaussian-filter/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/22.jpg">
@@ -215,7 +215,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2023/03/17/photo/" class="post-title-link" itemprop="url">test image</a>
+            <a href="/2023/03/17/gaussian-filter/" class="post-title-link" itemprop="url">高斯滤波</a>
         </h2>
 
         <div class="post-meta">
@@ -224,82 +224,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2023-03-17 22:35:24 / 修改时间：22:38:45" itemprop="dateCreated datePublished" datetime="2023-03-17T22:35:24+08:00">2023-03-17</time>
+              <time title="创建时间：2023-03-17 23:51:11" itemprop="dateCreated datePublished" datetime="2023-03-17T23:51:11+08:00">2023-03-17</time>
             </span>
-
-          
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-03-18 00:00:01" itemprop="dateModified" datetime="2023-03-18T00:00:01+08:00">2023-03-18</time>
               </span>
-              <span>0</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><img src="/2023/03/17/photo/AB14.jpg"></p>
-
-      
-    </div>
-
-    
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://kg5s.top/2023/03/17/gaussian_filter/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/22.jpg">
-      <meta itemprop="name" content="kg5s">
-      <meta itemprop="description" content="I am not surprised.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="kg5s">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2023/03/17/gaussian_filter/" class="post-title-link" itemprop="url">高斯滤波和均值滤波</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2023-03-17 22:24:31 / 修改时间：23:46:23" itemprop="dateCreated datePublished" datetime="2023-03-17T22:24:31+08:00">2023-03-17</time>
-            </span>
 
           
             <span class="post-meta-item" title="本文字数">
@@ -332,7 +266,7 @@ G(x,y) = \frac{1}{2\pi\sigma^{2}}{}e^{-\frac{x^{2}+y^{2}}{2\sigma^{2}}}
 <p>例如一个<code>3*3</code>的高斯核，一旦指定了$ $
 的大小，9个点的权重也将唯一确定。</p>
 <figure>
-<img src="/2023/03/17/gaussian_filter/20200703205553539.png" alt="20200703205553539">
+<img src="/2023/03/17/gaussian-filter/20200703205553539.png" alt="20200703205553539">
 <figcaption aria-hidden="true">20200703205553539</figcaption>
 </figure>
 <p>然后对图像进行卷积，生成新的图像。</p>
@@ -388,18 +322,90 @@ y_{i} = \frac{1}{2m+1}\sum_{k=0}^{2m+1}{G_{x}(i-m)\cdot{s_{k,i}}}
 轴的高斯滤波核大小为 <span class="math inline">\(2n+1\)</span> 其中：
 <span class="math display">\[
 G_{y}(y)=\frac{1}{\sqrt{2\pi\sigma}}e^{-\frac{y^{2}}{2\sigma}}
-\]</span></p>
-<p><span class="math display">\[
-s_{m,n}^{&#39;&#39;}=\frac{1}{2n+1}\sum_{q=0}^{2n+1}{y_q\cdot{G_y(q-n)}}\\
-=\frac{1}{(2m+1)(2n+1))}\sum_{q=0}^{2n+1}{\sum_{k=0}^{2m+1}{G_x{(i-m)}G_y{(q-n)}}\cdot{s_{k,q}}}\\
-=\frac{1}{(2m+1)(2n+1))}\sum_{k=0}^{2m+1}{\sum_{q=0}^{2n+1}{G_x{(i-m)}G_y{(q-n)}}\cdot{s_{k,q}}}\\
-=\frac{1}{(2m+1)(2n+1))}\sum_{k=0}^{2m+1}{\sum_{q=0}^{2n+1}}{G(i-m,q-n)\cdot{s_{k,q}}}\\
-=\frac{1}{(2m+1)(2n+1))}\sum_{k=0}^{2m+1}{\sum_{q=0}^{2n+1}}{s_{k,q}\cdot{g_{k,q}}}=s_{m,n}^{&#39;}
-\]</span></p>
-<p>$ Q E D$</p></li>
+\]</span></p></li>
 </ol>
+<p><span class="math display">\[
+   s_{m,n}^{&#39;&#39;}=\frac{1}{2n+1}\sum_{q=0}^{2n+1}{y_q\cdot{G_y(q-n)}}\\
+   =\frac{1}{(2m+1)(2n+1))}\sum_{q=0}^{2n+1}{\sum_{k=0}^{2m+1}{G_x{(i-m)}G_y{(q-n)}}\cdot{s_{k,q}}}\\
+   =\frac{1}{(2m+1)(2n+1))}\sum_{k=0}^{2m+1}{\sum_{q=0}^{2n+1}{G_x{(i-m)}G_y{(q-n)}}\cdot{s_{k,q}}}\\
+   =\frac{1}{(2m+1)(2n+1))}\sum_{k=0}^{2m+1}{\sum_{q=0}^{2n+1}}{G(i-m,q-n)\cdot{s_{k,q}}}\\
+   =\frac{1}{(2m+1)(2n+1))}\sum_{k=0}^{2m+1}{\sum_{q=0}^{2n+1}}{s_{k,q}\cdot{g_{k,q}}}=s_{m,n}^{&#39;}
+\]</span></p>
+<p>$ Q E D$</p>
 <h3 id="均值滤波">均值滤波</h3>
 <p>均值滤波则可认为高斯核里值恒为1的滤波方式。</p>
+
+      
+    </div>
+
+    
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://kg5s.top/2023/03/17/photo/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/22.jpg">
+      <meta itemprop="name" content="kg5s">
+      <meta itemprop="description" content="I am not surprised.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="kg5s">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/03/17/photo/" class="post-title-link" itemprop="url">test image</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2023-03-17 22:35:24 / 修改时间：22:38:45" itemprop="dateCreated datePublished" datetime="2023-03-17T22:35:24+08:00">2023-03-17</time>
+            </span>
+
+          
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+              <span>0</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><img src="/2023/03/17/photo/AB14.jpg"></p>
 
       
     </div>
